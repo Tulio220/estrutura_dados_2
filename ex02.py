@@ -1,16 +1,41 @@
-"""
-Escreva um programa que remova todos os elementos de uma lista que também estão presentes em outra lista.
-A = [4,5,2,3,1,2,5] = {1,2,3,4,5}
-B = [3,1,5,8,9] = {1,3,5,8,9}
+opcao = 1
+bd_estoque = []    #bd -> banco de dados
+while opcao != 4:
+    print('='*10)
+    print("1- Adicionar")
+    print('2- Consultar estoque')
+    print('3- Consultar Valor Total do Estoque')
+    print('4- Sair')
+    opcao = int(input('Opcao >>>> '))
+    if opcao == 1:
+        print('-----Adicionar produto-----')
+        codigo = int(input('Codigo: '))
+        nome = input('Nome: ')
+        descricao = input('Descricao: ')
+        preco = float(input('Preco: R$ '))
+        # adicionar a quantidade do produto no estoque
+        produto = [codigo, nome, descricao, preco]
+        bd_estoque.append(produto) # adicionar produto na lista estoque
+        print('-----Adicionado com sucesso-----')
+    elif opcao == 2:
+        print('-----Estoque-----')
+        # percorrer o bd
+        print(bd_estoque)
+        print('Codigo\tNome\tDescricao\tPreco')
+        for prod in bd_estoque:
+            print(prod[0],end='\t')   ### \t tab
+            print(prod[1],end='\t')
+            print(prod[2],end='\t')
+            print(prod[3])
+        print('-----Fim estoque-----')
+    elif opcao == 3:
+        #        valor total do estoque
+        soma = 0
+        for prod in bd_estoque:
+            soma += prod[3]
+        print(f"O valor total do estoque é: {soma}")
 
-Resultado = {2,4}
-"""
-listaA = [4,5,2,3,1,2,5]
-ListaB = [3,1,5,8,9]
-
-listaA = set(listaA)
-ListaB = set(ListaB)
-print(listaA.difference(ListaB))   
-
-
-
+    elif opcao == 4:
+        print('saindo....')
+    else:
+        print('opcao incorreta')
